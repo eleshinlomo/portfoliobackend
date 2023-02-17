@@ -1,10 +1,10 @@
 const express = require('express')
 const app = express()
-const PORT = 3300
 const cors = require('cors')
 const mongoose = require('mongoose')
 require('dotenv').config()
 const axios = require('axios')
+const PORT = process.env.PORT || 3300
 
 
 
