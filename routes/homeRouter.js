@@ -6,6 +6,7 @@ const User = require('../models/user')
 
 router.get('/users', controller.home)
 router.get('/news', controller.getNews)
+router.get('/chicagomuseum', controller.getFinancialData)
 
 
 module.exports = router

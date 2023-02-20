@@ -25,3 +25,23 @@ exports.getNews = (req, res)=>{
     
 }
 
+exports.getFinancialData = (req, res)=>{
+
+axios.get('https://api.artic.edu/api/v1/artworks', {
+    method: 'GET',
+    mode: "cors",
+})
+.then(function (response) {
+	if(!response){
+        console.log("no data found")
+    }else{
+        console.log(response.data)
+        res.json({items: response.data})
+        return response.data
+    }
+}).catch(function (error) {
+	console.error(error);
+});
+
+}
+
