@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 3300
 app.use(express.json())
 app.use(cors())
 app.use(express.urlencoded({extended: false}))
-app.use('https://portbackend.herokuapp.com/api', require('./routes/apiRouter'))
+app.use('/api', require('./routes/apiRouter'))
 
 
 
