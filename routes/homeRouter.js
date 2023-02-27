@@ -7,7 +7,7 @@ const User = require('../models/user')
 // Read
 
 
-
+router.get('/')
 
 module.exports = router
 

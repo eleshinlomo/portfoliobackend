@@ -11,8 +11,11 @@ const PORT = process.env.PORT || 3300
 
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin: "*",
+}))
 app.use(express.urlencoded({extended: false}))
+app.use('afrocoder.netlify.app', require('./routes/homeRouter'))
 app.use('/api', require('./routes/apiRouter'))
 
 

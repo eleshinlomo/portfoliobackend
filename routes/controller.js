@@ -28,7 +28,7 @@ exports.getSaasEmails = (req, res)=>{
    console.log(newEmail)
    newEmail.save()
    .then((result)=>{
-    res.redirect('http://localhost:3000/')
+    res.redirect('/')
    })
 
 }
