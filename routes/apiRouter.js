@@ -10,6 +10,7 @@ router.get('/news/', controller.getNews)
 
 // Create
 router.post('/addSaasUsers/', controller.getSaasEmails)
+router.post('/addFeedback/', controller.getFeedback)
 
 
 module.exports = router
