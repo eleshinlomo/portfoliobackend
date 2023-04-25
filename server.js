@@ -12,8 +12,9 @@ const PORT = process.env.PORT || 3300
 
 app.use(express.json())
 app.use(cors({
-    origin: "*",
-}))
+    origin: '*',
+    credentials: true,
+  }));
 app.use(express.urlencoded({extended: false}))
 app.use('/api', require('./routes/apiRouter'))
 

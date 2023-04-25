@@ -34,12 +34,21 @@ exports.getFeedback = (req, res)=>{
 
 
 exports.getSaasEmails = (req, res)=>{
-    const newEmail = new Email(req.body)
+    console.log(req.header)
+  const { subject, clientEmail, clientName, message } = req.body;
+  const newEmail = new Email({
+    subject,
+    clientEmail,
+    clientName,
+    message
+  })
    console.log(newEmail)
    newEmail.save()
    .then((result)=>{
-    res.redirect('/')
+    if(!result)
+    res.status(406).send("Email not sent")
    })
+   res.status(200).send("Your email was sent")
 
 }
 
