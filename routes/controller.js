@@ -28,13 +28,13 @@ exports.getNews = async (req, res)=>{
 
 exports.getSaasEmails = async (req, res)=>{
 
-  const { getSubject, getEmail, nameid, messageid } = req.body;
+  const { getSubject, getEmail, getName, getMessage } = req.body;
   const newEmail = await new Email({
 
     subjectid: getSubject,
     emailid: getEmail,
-    nameid,
-    messageid
+    nameid: getName,
+    messageid: getMessage
     
   })
    console.log(newEmail)
@@ -43,7 +43,7 @@ exports.getSaasEmails = async (req, res)=>{
     if(!result)
     res.status(406).send({message: "Email not sent"})
    })
-   res.status(200).send({message: "You email was sent"})
+   return res.status(200).send({message: "Your email was sent"})
 
 }
 

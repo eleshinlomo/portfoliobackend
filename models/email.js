@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 const emailSchema = mongoose.Schema({
-    subjectid: String,
-    emailid: String,
-    nameid: String,
-    messageid: String
+    getSubject: String,
+    getEmail: String,
+    getName: String,
+    getMessage: String
 })
 
 const Email = mongoose.model('Email', emailSchema)
