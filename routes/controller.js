@@ -9,8 +9,8 @@ require('dotenv').config()
 
 
 
-exports.getNews = (req, res)=>{
-    axios.get(`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${process.env.newsAPI}`)
+exports.getNews = async (req, res)=>{
+    await axios.get(`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${process.env.newsAPI}`)
     .then((result)=>{
         if(!result){
             res.send("No data fetched")
@@ -23,32 +23,27 @@ exports.getNews = (req, res)=>{
     
 }
 
-exports.getFeedback = (req, res)=>{
-    const feedback = new Feedback(req.body)
-    console.log(feedback)
-    feedback.save()
-    .then((result)=>{
-        res.redirect('/')
-    })
-}
 
 
-exports.getSaasEmails = (req, res)=>{
-    console.log(req.header)
-  const { subject, clientEmail, clientName, message } = req.body;
-  const newEmail = new Email({
-    subject,
-    clientEmail,
-    clientName,
-    message
+
+exports.getSaasEmails = async (req, res)=>{
+
+  const { getSubject, getEmail, nameid, messageid } = req.body;
+  const newEmail = await new Email({
+
+    subjectid: getSubject,
+    emailid: getEmail,
+    nameid,
+    messageid
+    
   })
    console.log(newEmail)
-   newEmail.save()
+   await newEmail.save()
    .then((result)=>{
     if(!result)
-    res.status(406).send("Email not sent")
+    res.status(406).send({message: "Email not sent"})
    })
-   res.status(200).send("Your email was sent")
+   res.status(200).send({message: "You email was sent"})
 
 }
 
